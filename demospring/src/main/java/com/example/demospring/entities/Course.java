@@ -1,9 +1,11 @@
 package com.example.demospring.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Course {
@@ -15,7 +17,16 @@ public class Course {
 	String title;
 	String summary;
 	
+	@ManyToOne(cascade=CascadeType.ALL)
+	Category category;
 	
+	
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	public int getId() {
 		return id;
 	}
